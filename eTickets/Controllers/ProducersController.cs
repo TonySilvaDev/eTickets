@@ -1,4 +1,5 @@
 ﻿using eTickets.Data.Services;
+using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eTickets.Controllers
@@ -29,6 +30,24 @@ namespace eTickets.Controllers
             }
 
             return View(producerDetails);
+        }
+
+        //GET: producers/create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("ProfilePictureURL,FullName,Bio")]Producer producer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(producer);
+            }
+
+            await _service.AddAsync(producer);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
