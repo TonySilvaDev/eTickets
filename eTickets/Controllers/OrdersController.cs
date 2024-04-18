@@ -14,7 +14,7 @@ namespace eTickets.Controllers
             _moviesService = moviesService;
             _shoppingCart = shoppingCart;
         }
-        public IActionResult Index()
+        public IActionResult ShoppingCart()
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
@@ -24,7 +24,7 @@ namespace eTickets.Controllers
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
             };
 
-            return View();
+            return View(response);
         }
     }
 }
