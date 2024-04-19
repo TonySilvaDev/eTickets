@@ -35,7 +35,7 @@ namespace eTickets.Data.Services
                 {
                     Amount = item.Amount,
                     MovieId = item.Movie.Id,
-                    OederId = order.Id,
+                    OrderId = order.Id,
                     Price = item.Movie.Price
                 };
                 await _context.OrderItems.AddAsync(orderItem);
